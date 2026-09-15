@@ -72,33 +72,33 @@ export default function Header() {
 
         <MobileMenuButton
           type="button"
+          $isOpen={isMenuOpen}
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={isMenuOpen}
+          aria-controls="mobile-navigation"
           onClick={() => setIsMenuOpen((current) => !current)}
         >
-          <MenuLine />
-          <MenuLine />
-          <MenuLine />
+          <MenuLine $isOpen={isMenuOpen} />
+          <MenuLine $isOpen={isMenuOpen} />
+          <MenuLine $isOpen={isMenuOpen} />
         </MobileMenuButton>
       </HeaderContainer>
 
-      {isMenuOpen && (
-        <MobileNavigation aria-label="Mobile navigation">
-          {navigationItems.map((item) => (
-            <MobileNavLink
-              key={item.href}
-              href={item.href}
-              onClick={closeMenu}
-            >
-              {item.label}
-            </MobileNavLink>
-          ))}
+      <MobileNavigation
+        id="mobile-navigation"
+        $isOpen={isMenuOpen}
+        aria-label="Mobile navigation"
+      >
+        {navigationItems.map((item) => (
+          <MobileNavLink key={item.href} href={item.href} onClick={closeMenu}>
+            {item.label}
+          </MobileNavLink>
+        ))}
 
-          <MobileQuoteButton href="/contact" onClick={closeMenu}>
-            Get a Quote
-          </MobileQuoteButton>
-        </MobileNavigation>
-      )}
+        <MobileQuoteButton href="/contact" onClick={closeMenu}>
+          Get a Quote
+        </MobileQuoteButton>
+      </MobileNavigation>
     </HeaderWrapper>
   );
 }

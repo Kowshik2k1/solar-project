@@ -1,6 +1,15 @@
 import styled from "styled-components";
 import { theme } from "@/styles/theme";
 
+declare module "styled-components" {
+  export interface DefaultTheme {
+    colors: typeof theme.colors;
+    container: typeof theme.container;
+    breakpoints: typeof theme.breakpoints;
+    radius: typeof theme.radius;
+  }
+}
+
 export const HeaderWrapper = styled.header`
   position: sticky;
   top: 0;
@@ -93,7 +102,7 @@ export const QuoteButton = styled.a`
   }
 `;
 
-export const MobileMenuButton = styled.button`
+export const MobileMenuButton = styled.button<{ $isOpen: boolean }>`
   display: none;
 
   width: 44px;
@@ -115,7 +124,7 @@ export const MobileMenuButton = styled.button`
   }
 `;
 
-export const MenuLine = styled.span`
+export const MenuLine = styled.span<{ $isOpen: boolean }>`
   display: block;
 
   width: 22px;
@@ -123,19 +132,55 @@ export const MenuLine = styled.span`
 
   border-radius: 2px;
   background: ${theme.colors.text};
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.2s ease,
+    width 0.3s ease;
+
+  &:nth-child(1) {
+    transform: ${({ $isOpen }) =>
+      $isOpen
+        ? "translateY(7px) rotate(45deg)"
+        : "translateY(0) rotate(0)"};
+  }
+
+  &:nth-child(2) {
+    opacity: ${({ $isOpen }) => ($isOpen ? 0 : 1)};
+    transform: ${({ $isOpen }) =>
+      $isOpen ? "scaleX(0)" : "scaleX(1)"};
+  }
+
+  &:nth-child(3) {
+    transform: ${({ $isOpen }) =>
+      $isOpen
+        ? "translateY(-7px) rotate(-45deg)"
+        : "translateY(0) rotate(0)"};
+  }
 `;
 
-export const MobileNavigation = styled.nav`
-  display: none;
+export const MobileNavigation = styled.nav<{ $isOpen: boolean }>`
+  display: flex;
+  flex-direction: column;
+
+  max-height: ${({ $isOpen }) => ($isOpen ? "500px" : "0")};
+  overflow: hidden;
+
+  padding: ${({ $isOpen }) =>
+    $isOpen ? "8px 24px 24px" : "0 24px"};
+
+  border-top: ${({ $isOpen }) =>
+    $isOpen ? `1px solid ${theme.colors.border}` : "0"};
+
+  background: ${theme.colors.white};
+
+  transition:
+    max-height 0.35s ease,
+    padding 0.35s ease,
+    border-color 0.25s ease;
 
   @media (max-width: ${theme.breakpoints.desktop}) {
     display: flex;
-    flex-direction: column;
-
-    padding: 8px ${theme.container.padding} 24px;
-
-    border-top: 1px solid ${theme.colors.border};
-    background: ${theme.colors.white};
   }
 `;
 
