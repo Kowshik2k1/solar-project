@@ -84,48 +84,45 @@ export const DesktopNavigation = styled.nav`
   }
 `;
 
-export const NavLink = styled(Link)`
+export const NavLink = styled(Link)<{ $isActive: boolean }>`
   position: relative;
-
+  display: inline-flex;
+  align-items: center;
   padding: 8px 0;
 
+  color: ${({ $isActive }) =>
+    $isActive ? theme.colors.primary : theme.colors.text};
   font-size: 14px;
   font-weight: 600;
-
   text-decoration: none;
 
-  color: ${theme.colors.textMuted};
-
-  transition: color 0.2s ease;
+  transition:
+    color 0.25s ease,
+    opacity 0.25s ease;
 
   &::after {
     content: "";
-
     position: absolute;
     left: 0;
     bottom: 0;
 
-    width: 100%;
+    width: ${({ $isActive }) => ($isActive ? "100%" : "0")};
     height: 2px;
 
     background: ${theme.colors.primary};
+    border-radius: 999px;
 
-    transform: scaleX(0);
-    transform-origin: right;
-
-    transition: transform 0.25s ease;
+    transition: width 0.25s ease;
   }
 
   &:hover {
-    color: ${theme.colors.primaryDark};
+    color: ${theme.colors.primary};
   }
 
   &:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
+    width: 100%;
   }
 `;
-
 /* --------------------------------
    Desktop CTA
 -------------------------------- */
@@ -279,7 +276,7 @@ export const MobileNavigation = styled.nav<{ $isOpen: boolean }>`
   }
 `;
 
-export const MobileNavLink = styled(Link)`
+export const MobileNavLink = styled(Link)<{ $isActive: boolean }>`
   display: flex;
   align-items: center;
 
@@ -294,7 +291,8 @@ export const MobileNavLink = styled(Link)`
 
   text-decoration: none;
 
-  color: ${theme.colors.text};
+  color: ${({ $isActive }) =>
+    $isActive ? theme.colors.primary : theme.colors.text};
 
   &:hover {
     color: ${theme.colors.primary};

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Infrastructure and solar icon">
+  <rect width="64" height="64" rx="16" fill="#0B2D4D"/>
+  <path d="M14 46h36v4H14zm6-19h4v15h-4zm10-10h4v25h-4zm10 6h4v19h-4z" fill="#EAF3FA"/>
+  <path d="M12 24c0-7 6-12 14-12 9 0 15 6 16 13-4-2-8-2-12 0-4 2-7 6-8 11H12v-12Z" fill="#F7C948" opacity="0.95"/>
+  <path d="M44 20l6 8-6 8-6-8 6-8Z" fill="#4FA3E3" opacity="0.9"/>
+</svg>

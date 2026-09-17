@@ -14,9 +14,23 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Solar Energy Solutions",
+  metadataBase: new URL("https://example.com"),
+  title: {
+    default: "Company Name | Infrastructure & Solar Solutions",
+    template: "%s | Company Name",
+  },
   description:
-    "Professional solar panel installation solutions for residential, commercial and industrial projects.",
+    "Infrastructure development and solar solutions for residential, commercial and industrial projects.",
+  keywords: [
+    "infrastructure",
+    "civil works",
+    "solar projects",
+    "renewable energy",
+    "industrial infrastructure",
+  ],
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({

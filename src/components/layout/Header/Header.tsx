@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import navigation from "@/data/navigation.json";
 import site from "@/data/site.json";
@@ -25,9 +25,18 @@ import {
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   const handleMobileLinkClick = () => {
     setIsMenuOpen(false);
+  };
+
+  const isActiveLink = (href: string) => {
+    if (href === "/") {
+      return pathname === "/";
+    }
+
+    return pathname.startsWith(href);
   };
 
   return (
@@ -42,7 +51,11 @@ export default function Header() {
         {/* Desktop Navigation */}
         <DesktopNavigation aria-label="Main navigation">
           {navigation.map((item) => (
-            <NavLink key={item.href} href={item.href}>
+            <NavLink
+              key={item.href}
+              href={item.href}
+              $isActive={isActiveLink(item.href)}
+            >
               {item.label}
             </NavLink>
           ))}
@@ -81,6 +94,7 @@ export default function Header() {
           <MobileNavLink
             key={item.href}
             href={item.href}
+            $isActive={isActiveLink(item.href)}
             tabIndex={isMenuOpen ? 0 : -1}
             onClick={handleMobileLinkClick}
           >

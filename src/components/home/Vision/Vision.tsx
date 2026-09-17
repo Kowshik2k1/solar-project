@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import vision from "@/data/vision.json";
 import { ScrollReveal } from "@/components/common/ScrollReveal";
 
