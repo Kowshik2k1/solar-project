@@ -1,13 +1,19 @@
+import ContactHero from "@/components/contact/ContactHero";
+import { ContactInfo } from "@/components/contact/ContactInfo";
+import ContactForm from "@/components/contact/ContactForm";
+
+export const metadata = {
+  title: "Contact Us",
+  description:
+    "Get in touch with us for project enquiries, business opportunities and infrastructure development.",
+};
+
 export default function ContactPage() {
   return (
     <main>
-      <section>
-        <h1>Contact</h1>
-        <p>
-          This contact page is currently under construction. We will add our
-          inquiry form and contact details here soon.
-        </p>
-      </section>
+      <ContactHero />
+      <ContactInfo />
+      <ContactForm />
     </main>
   );
 }

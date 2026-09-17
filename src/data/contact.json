@@ -1,0 +1,40 @@
+{
+  "hero": {
+    "eyebrow": "CONTACT US",
+    "title": "Let's start a conversation.",
+    "description": "Have a project in mind or want to learn more about our work? Get in touch with us."
+  },
+  "info": {
+    "eyebrow": "GET IN TOUCH",
+    "title": "We'd be happy to hear from you.",
+    "description": "Whether you have a project enquiry, a business opportunity or simply want to know more about us, reach out to our team.",
+    "items": [
+      {
+        "label": "Email",
+        "value": "info@company.com",
+        "href": "mailto:info@company.com"
+      },
+      {
+        "label": "Phone",
+        "value": "+91 XXXXX XXXXX",
+        "href": "tel:+91XXXXXXXXXX"
+      },
+      {
+        "label": "Location",
+        "value": "Your Office Location",
+        "href": null
+      }
+    ]
+  },
+  "form": {
+    "eyebrow": "SEND AN ENQUIRY",
+    "title": "Tell us about your project.",
+    "description": "Share a few details and our team will get back to you.",
+    "projectTypes": [
+      "Solar",
+      "Infrastructure",
+      "Commercial",
+      "Other"
+    ]
+  }
+}
