@@ -1,75 +1,57 @@
-import { Container } from "@/components/common/Container";
+import Link from "next/link";
+
+import hero from "@/data/hero.json";
 
 import {
-  Actions,
-  Description,
-  Eyebrow,
-  HeroBackground,
-  HeroContent,
   HeroSection,
-  Heading,
+  HeroBackground,
+  HeroOverlay,
+  HeroContainer,
+  HeroContent,
+  Eyebrow,
+  Title,
+  Description,
+  Actions,
   PrimaryButton,
   SecondaryButton,
-  Stat,
-  StatLabel,
-  StatValue,
-  Stats,
+  ScrollIndicator,
 } from "./style";
-
-const stats = [
-  {
-    value: "10+ MW",
-    label: "Solar Capacity Installed",
-  },
-  {
-    value: "500+",
-    label: "Successful Installations",
-  },
-  {
-    value: "25 Yrs",
-    label: "Performance Warranty",
-  },
-];
 
 export default function Hero() {
   return (
     <HeroSection>
-      <HeroBackground />
+      <HeroBackground
+        $backgroundImage={hero.backgroundImage}
+        aria-hidden="true"
+      />
 
-      <Container>
+      <HeroOverlay aria-hidden="true" />
+
+      <HeroContainer>
         <HeroContent>
-          <Eyebrow>Clean Energy. Smarter Future.</Eyebrow>
+          <Eyebrow>{hero.eyebrow}</Eyebrow>
 
-          <Heading>
-            Power your future with solar energy.
-          </Heading>
+          <Title>{hero.title}</Title>
 
-          <Description>
-            Reliable solar solutions for homes, businesses and industries —
-            designed to reduce energy costs and move you toward a cleaner,
-            more sustainable future.
-          </Description>
+          <Description>{hero.description}</Description>
 
           <Actions>
-            <PrimaryButton href="/contact">
-              Get a Free Quote
+            <PrimaryButton href={hero.primaryCta.href}>
+              {hero.primaryCta.label}
+              <span aria-hidden="true">→</span>
             </PrimaryButton>
 
-            <SecondaryButton href="/projects">
-              Explore Our Projects
+            <SecondaryButton href={hero.secondaryCta.href}>
+              {hero.secondaryCta.label}
             </SecondaryButton>
           </Actions>
-
-          <Stats>
-            {stats.map((stat) => (
-              <Stat key={stat.label}>
-                <StatValue>{stat.value}</StatValue>
-                <StatLabel>{stat.label}</StatLabel>
-              </Stat>
-            ))}
-          </Stats>
         </HeroContent>
-      </Container>
+
+        <ScrollIndicator aria-hidden="true">
+          <span />
+          <p>Scroll to explore</p>
+        </ScrollIndicator>
+      </HeroContainer>
     </HeroSection>
   );
 }

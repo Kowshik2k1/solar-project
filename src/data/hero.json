@@ -1,0 +1,14 @@
+{
+  "eyebrow": "INFRASTRUCTURE & DEVELOPMENT",
+  "title": "Building infrastructure for a stronger tomorrow.",
+  "description": "Driven by a vision for reliable, sustainable and meaningful infrastructure development.",
+  "primaryCta": {
+    "label": "Explore Our Project",
+    "href": "/projects"
+  },
+  "secondaryCta": {
+    "label": "Contact Us",
+    "href": "/contact"
+  },
+  "backgroundImage": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=2200&q=85"
+}

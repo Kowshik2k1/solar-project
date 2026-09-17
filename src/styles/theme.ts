@@ -1,22 +1,24 @@
 export const theme = {
   colors: {
-    primary: "#174A35",
-    primaryDark: "#103526",
-    accent: "#F4C542",
+    primary: "#1557A6",
+    primaryDark: "#0B2D4D",
+    secondary: "#2F80C9",
+    accent: "#4FA3E3",
 
-    background: "#F8F8F3",
-    backgroundAlt: "#EEF3EE",
+    background: "#F5F9FC",
+    backgroundAlt: "#EAF3FA",
 
     white: "#FFFFFF",
     black: "#111111",
-    text: "#202522",
-    textMuted: "#66706A",
 
-    border: "#DDE4DE",
+    text: "#17212B",
+    textMuted: "#657482",
+
+    border: "#D9E5EF",
   },
 
   fonts: {
-    heading: "var(--font-heading)",
+    heading: "var(--font-body)",
     body: "var(--font-body)",
   },
 

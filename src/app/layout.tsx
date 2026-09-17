@@ -5,6 +5,7 @@ import { ThemeProvider } from "styled-components";
 import GlobalStyles from "@/styles/GlobalStyles";
 import { theme } from "@/styles/theme";
 import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-body",
@@ -31,6 +32,7 @@ export default function RootLayout({
             <GlobalStyles />
             <Header />
             {children}
+            <Footer />
           </ThemeProvider>
         </StyledComponentsRegistry>
       </body>

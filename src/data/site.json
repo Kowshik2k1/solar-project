@@ -1,0 +1,9 @@
+{
+  "name": "Company Name",
+  "shortName": "COMPANY",
+  "tagline": "INFRASTRUCTURES",
+  "description": "Building reliable infrastructure for a better tomorrow.",
+  "logo": {
+    "type": "text"
+  }
+}

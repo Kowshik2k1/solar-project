@@ -1,82 +1,69 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+
+import navigation from "@/data/navigation.json";
+import site from "@/data/site.json";
 
 import {
-  DesktopNavigation,
-  HeaderActions,
-  HeaderContainer,
   HeaderWrapper,
+  HeaderContainer,
   Logo,
-  MenuLine,
+  LogoName,
+  LogoTagline,
+  DesktopNavigation,
+  NavLink,
+  HeaderActions,
+  QuoteButton,
   MobileMenuButton,
+  MenuLine,
   MobileNavigation,
   MobileNavLink,
   MobileQuoteButton,
-  NavLink,
-  QuoteButton,
 } from "./style";
-
-const navigationItems = [
-  {
-    label: "Home",
-    href: "/",
-  },
-  {
-    label: "Solutions",
-    href: "/services",
-  },
-  {
-    label: "Projects",
-    href: "/projects",
-  },
-  {
-    label: "About",
-    href: "/about",
-  },
-  {
-    label: "Gallery",
-    href: "/gallery",
-  },
-  {
-    label: "Contact",
-    href: "/contact",
-  },
-];
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const closeMenu = () => {
+  const handleMobileLinkClick = () => {
     setIsMenuOpen(false);
   };
 
   return (
     <HeaderWrapper>
       <HeaderContainer>
-        <Logo href="/" aria-label="Solar Energy Solutions home">
-          SOLAR<span>.</span>
+        {/* Logo */}
+        <Logo href="/" aria-label={`${site.name} home`}>
+          <LogoName>{site.shortName}</LogoName>
+          <LogoTagline>{site.tagline}</LogoTagline>
         </Logo>
 
+        {/* Desktop Navigation */}
         <DesktopNavigation aria-label="Main navigation">
-          {navigationItems.map((item) => (
+          {navigation.map((item) => (
             <NavLink key={item.href} href={item.href}>
               {item.label}
             </NavLink>
           ))}
         </DesktopNavigation>
 
+        {/* Desktop CTA */}
         <HeaderActions>
-          <QuoteButton href="/contact">Get a Quote</QuoteButton>
+          <QuoteButton href="/contact">
+            Get a Quote
+            <span aria-hidden="true">→</span>
+          </QuoteButton>
         </HeaderActions>
 
+        {/* Mobile Menu Button */}
         <MobileMenuButton
           type="button"
           $isOpen={isMenuOpen}
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          onClick={() => setIsMenuOpen((prev) => !prev)}
+          aria-label={isMenuOpen ? "Close navigation" : "Open navigation"}
           aria-expanded={isMenuOpen}
           aria-controls="mobile-navigation"
-          onClick={() => setIsMenuOpen((current) => !current)}
         >
           <MenuLine $isOpen={isMenuOpen} />
           <MenuLine $isOpen={isMenuOpen} />
@@ -84,19 +71,30 @@ export default function Header() {
         </MobileMenuButton>
       </HeaderContainer>
 
+      {/* Mobile Navigation */}
       <MobileNavigation
         id="mobile-navigation"
         $isOpen={isMenuOpen}
-        aria-label="Mobile navigation"
+        aria-hidden={!isMenuOpen}
       >
-        {navigationItems.map((item) => (
-          <MobileNavLink key={item.href} href={item.href} onClick={closeMenu}>
+        {navigation.map((item) => (
+          <MobileNavLink
+            key={item.href}
+            href={item.href}
+            tabIndex={isMenuOpen ? 0 : -1}
+            onClick={handleMobileLinkClick}
+          >
             {item.label}
           </MobileNavLink>
         ))}
 
-        <MobileQuoteButton href="/contact" onClick={closeMenu}>
+        <MobileQuoteButton
+          href="/contact"
+          tabIndex={isMenuOpen ? 0 : -1}
+          onClick={handleMobileLinkClick}
+        >
           Get a Quote
+          <span aria-hidden="true">→</span>
         </MobileQuoteButton>
       </MobileNavigation>
     </HeaderWrapper>

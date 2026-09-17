@@ -1,9 +1,21 @@
 {
-  "eyebrow": "ABOUT US",
-  "title": "Building a brighter future with solar energy.",
-  "description": "We deliver dependable solar energy solutions designed around the unique needs of homes, businesses and industries.",
-  "secondaryDescription": "From system design and installation to ongoing support, our focus is on delivering reliable solutions that create long-term value.",
-  "image": "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=85",
-  "buttonText": "Discover Our Story",
-  "buttonHref": "/about"
+  "eyebrow": "WHO WE ARE",
+  "title": "Building with purpose. Growing with vision.",
+  "description": "We are focused on building a strong foundation in infrastructure through thoughtful development, reliable execution and a long-term commitment to creating meaningful projects.",
+  "secondaryDescription": "With a focus on quality, responsible development and continuous improvement, we aim to grow our project portfolio while creating lasting value.",
+  "image": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=85",
+  "buttonText": "About Us",
+  "buttonHref": "/about",
+  "highlights": [
+    {
+      "number": "01",
+      "title": "Our Vision",
+      "description": "Creating infrastructure that delivers lasting value."
+    },
+    {
+      "number": "02",
+      "title": "Our Approach",
+      "description": "Focused planning, responsible execution and continuous improvement."
+    }
+  ]
 }

@@ -1,15 +1,21 @@
 import { Hero } from "@/components/home/Hero";
-import { Impact } from "@/components/home/Impact";
-import { WhySolar } from "@/components/home/WhySolar";
-import { AboutPreview } from "@/components/home/AboutPreview";
+import { About } from "@/components/home/About";
+import { Process } from "@/components/home/Process";
+import { FeaturedProject } from "@/components/home/FeaturedProject";
+import { WhyChooseUs } from "@/components/home/WhyChooseUs";
+import { Vision } from "@/components/home/Vision";
+import { ContactCTA } from "@/components/home/ContactCTA";
 
 export default function Home() {
   return (
     <main>
       <Hero />
-      <Impact />
-      <WhySolar />
-      <AboutPreview />
+      <About />
+      <Process />
+      <FeaturedProject />
+      <WhyChooseUs />
+      <Vision />
+      <ContactCTA />
     </main>
   );
 }

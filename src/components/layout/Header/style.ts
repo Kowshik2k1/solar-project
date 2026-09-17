@@ -1,106 +1,186 @@
 import styled from "styled-components";
+import Link from "next/link";
 import { theme } from "@/styles/theme";
-
-declare module "styled-components" {
-  export interface DefaultTheme {
-    colors: typeof theme.colors;
-    container: typeof theme.container;
-    breakpoints: typeof theme.breakpoints;
-    radius: typeof theme.radius;
-  }
-}
 
 export const HeaderWrapper = styled.header`
   position: sticky;
   top: 0;
   z-index: 1000;
+
   width: 100%;
+
   background: ${theme.colors.white};
   border-bottom: 1px solid ${theme.colors.border};
 `;
 
 export const HeaderContainer = styled.div`
-  width: 100%;
-  max-width: ${theme.container.maxWidth};
-  height: 80px;
+  width: min(
+    calc(100% - 64px),
+    ${theme.container.maxWidth}
+  );
+
+  min-height: 82px;
   margin: 0 auto;
-  padding: 0 ${theme.container.padding};
 
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 32px;
+
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    width: calc(100% - 32px);
+    min-height: 72px;
+  }
 `;
 
-export const Logo = styled.a`
+/* --------------------------------
+   Logo
+-------------------------------- */
+
+export const Logo = styled(Link)`
   display: inline-flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
   flex-shrink: 0;
 
-  font-size: 22px;
+  text-decoration: none;
+  line-height: 1;
+`;
+
+export const LogoName = styled.span`
+  font-size: 23px;
   font-weight: 800;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.045em;
+
+  color: ${theme.colors.primaryDark};
+`;
+
+export const LogoTagline = styled.span`
+  margin-top: 5px;
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+
   color: ${theme.colors.primary};
 `;
+
+/* --------------------------------
+   Desktop Navigation
+-------------------------------- */
 
 export const DesktopNavigation = styled.nav`
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 32px;
+
+  margin-left: auto;
 
   @media (max-width: ${theme.breakpoints.desktop}) {
     display: none;
   }
 `;
 
-export const NavLink = styled.a`
+export const NavLink = styled(Link)`
   position: relative;
+
+  padding: 8px 0;
 
   font-size: 14px;
   font-weight: 600;
-  color: ${theme.colors.text};
+
+  text-decoration: none;
+
+  color: ${theme.colors.textMuted};
 
   transition: color 0.2s ease;
 
+  &::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 2px;
+
+    background: ${theme.colors.primary};
+
+    transform: scaleX(0);
+    transform-origin: right;
+
+    transition: transform 0.25s ease;
+  }
+
   &:hover {
-    color: ${theme.colors.primary};
+    color: ${theme.colors.primaryDark};
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
   }
 `;
+
+/* --------------------------------
+   Desktop CTA
+-------------------------------- */
 
 export const HeaderActions = styled.div`
   display: flex;
   align-items: center;
-  gap: 12px;
+
+  flex-shrink: 0;
 
   @media (max-width: ${theme.breakpoints.desktop}) {
     display: none;
   }
 `;
 
-export const QuoteButton = styled.a`
+export const QuoteButton = styled(Link)`
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 9px;
 
   min-height: 44px;
   padding: 0 20px;
 
-  border-radius: ${theme.radius.pill};
+  border-radius: ${theme.radius.sm};
 
   background: ${theme.colors.primary};
   color: ${theme.colors.white};
 
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
+
+  text-decoration: none;
 
   transition:
     background 0.2s ease,
     transform 0.2s ease;
 
+  span {
+    transition: transform 0.2s ease;
+  }
+
   &:hover {
     background: ${theme.colors.primaryDark};
     transform: translateY(-1px);
   }
+
+  &:hover span {
+    transform: translateX(3px);
+  }
 `;
+
+/* --------------------------------
+   Mobile Menu Button
+-------------------------------- */
 
 export const MobileMenuButton = styled.button<{ $isOpen: boolean }>`
   display: none;
@@ -117,7 +197,10 @@ export const MobileMenuButton = styled.button<{ $isOpen: boolean }>`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
   gap: 5px;
+
+  cursor: pointer;
 
   @media (max-width: ${theme.breakpoints.desktop}) {
     display: flex;
@@ -131,12 +214,12 @@ export const MenuLine = styled.span<{ $isOpen: boolean }>`
   height: 2px;
 
   border-radius: 2px;
-  background: ${theme.colors.text};
+
+  background: ${theme.colors.primaryDark};
 
   transition:
     transform 0.3s ease,
-    opacity 0.2s ease,
-    width 0.3s ease;
+    opacity 0.2s ease;
 
   &:nth-child(1) {
     transform: ${({ $isOpen }) =>
@@ -147,6 +230,7 @@ export const MenuLine = styled.span<{ $isOpen: boolean }>`
 
   &:nth-child(2) {
     opacity: ${({ $isOpen }) => ($isOpen ? 0 : 1)};
+
     transform: ${({ $isOpen }) =>
       $isOpen ? "scaleX(0)" : "scaleX(1)"};
   }
@@ -159,11 +243,15 @@ export const MenuLine = styled.span<{ $isOpen: boolean }>`
   }
 `;
 
+/* --------------------------------
+   Mobile Navigation
+-------------------------------- */
+
 export const MobileNavigation = styled.nav<{ $isOpen: boolean }>`
-  display: flex;
-  flex-direction: column;
+  display: none;
 
   max-height: ${({ $isOpen }) => ($isOpen ? "500px" : "0")};
+
   overflow: hidden;
 
   padding: ${({ $isOpen }) =>
@@ -181,24 +269,68 @@ export const MobileNavigation = styled.nav<{ $isOpen: boolean }>`
 
   @media (max-width: ${theme.breakpoints.desktop}) {
     display: flex;
+
+    flex-direction: column;
+  }
+
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 `;
 
-export const MobileNavLink = styled.a`
-  padding: 14px 0;
+export const MobileNavLink = styled(Link)`
+  display: flex;
+  align-items: center;
 
-  font-size: 16px;
-  font-weight: 600;
-  color: ${theme.colors.text};
+  min-height: 48px;
+
+  padding: 0 8px;
 
   border-bottom: 1px solid ${theme.colors.border};
 
-  &:last-of-type {
-    border-bottom: 0;
+  font-size: 15px;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  color: ${theme.colors.text};
+
+  &:hover {
+    color: ${theme.colors.primary};
   }
 `;
 
-export const MobileQuoteButton = styled(QuoteButton)`
-  margin-top: 16px;
-  width: 100%;
+export const MobileQuoteButton = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 46px;
+
+  margin-top: 20px;
+  padding: 0 20px;
+
+  border-radius: ${theme.radius.sm};
+
+  background: ${theme.colors.primary};
+  color: ${theme.colors.white};
+
+  font-size: 14px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  span {
+    transition: transform 0.2s ease;
+  }
+
+  &:hover {
+    background: ${theme.colors.primaryDark};
+  }
+
+  &:hover span {
+    transform: translateX(3px);
+  }
 `;

@@ -1,44 +1,46 @@
-import whySolar from "@/data/why-solar.json";
-
-import { Container } from "@/components/common/Container";
 import { ScrollReveal } from "@/components/common/ScrollReveal";
+import whyChooseUs from "@/data/why-choose-us.json";
 
 import {
-  Card,
-  CardDescription,
-  CardTitle,
-  Description,
-  Eyebrow,
-  Grid,
-  Header,
-  Number,
   Section,
+  Container,
+  Header,
+  Eyebrow,
   Title,
+  Description,
+  Grid,
+  Card,
+  Number,
+  CardTitle,
+  CardDescription,
 } from "./style";
 
-export default function WhySolar() {
+export default function WhyChooseUs() {
   return (
     <Section>
       <Container>
         <ScrollReveal>
           <Header>
-            <Eyebrow>Why Solar?</Eyebrow>
+            <Eyebrow>WHY CHOOSE US</Eyebrow>
 
             <Title>
-              Make your energy work for you.
+              A foundation built around quality and vision.
             </Title>
 
             <Description>
-              Solar energy isn&apoas;t just about generating electricity. It&apoas;s
-              about gaining greater control over your energy costs while
-              investing in a cleaner future.
+              We are committed to building our company on principles
+              that support responsible development and long-term
+              project value.
             </Description>
           </Header>
         </ScrollReveal>
 
         <Grid>
-          {whySolar.map((item, index) => (
-            <ScrollReveal key={item.number} delay={index * 100}>
+          {whyChooseUs.map((item, index) => (
+            <ScrollReveal
+              key={item.number}
+              delay={index * 80}
+            >
               <Card>
                 <Number>{item.number}</Number>
 
