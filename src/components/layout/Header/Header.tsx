@@ -45,7 +45,6 @@ export default function Header() {
         {/* Logo */}
         <Logo href="/" aria-label={`${site.name} home`}>
           <LogoName>{site.shortName}</LogoName>
-          <LogoTagline>{site.tagline}</LogoTagline>
         </Logo>
 
         {/* Desktop Navigation */}

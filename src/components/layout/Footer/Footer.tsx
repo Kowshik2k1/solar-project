@@ -27,7 +27,6 @@ export default function Footer() {
           <Brand>
             <Logo href="/" aria-label={`${site.name} home`}>
               <LogoName>{site.shortName}</LogoName>
-              <LogoTagline>{site.tagline}</LogoTagline>
             </Logo>
 
             <BrandDescription>
@@ -37,7 +36,7 @@ export default function Footer() {
 
           <NavigationColumns>
             <NavigationColumn>
-              <ColumnTitle>Company</ColumnTitle>
+              <ColumnTitle>ASP Infrastructure Projects</ColumnTitle>
 
               {navigation
                 .filter((item) =>
@@ -81,16 +80,6 @@ export default function Footer() {
             © {new Date().getFullYear()} {site.name}. All rights
             reserved.
           </Copyright>
-
-          <LegalLinks>
-            <FooterLink href="/privacy-policy">
-              Privacy Policy
-            </FooterLink>
-
-            <FooterLink href="/terms">
-              Terms & Conditions
-            </FooterLink>
-          </LegalLinks>
         </FooterBottom>
       </Container>
     </FooterWrapper>

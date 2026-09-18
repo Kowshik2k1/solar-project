@@ -78,7 +78,10 @@ export const ProjectWrapper = styled.div`
 `;
 
 export const ImageWrapper = styled.div`
+  position: relative;
+
   min-height: 560px;
+  aspect-ratio: 1.05 / 1;
 
   overflow: hidden;
 
@@ -86,21 +89,21 @@ export const ImageWrapper = styled.div`
 
   @media (max-width: ${theme.breakpoints.tablet}) {
     min-height: 400px;
+    aspect-ratio: 1.35 / 1;
   }
 
   @media (max-width: ${theme.breakpoints.mobile}) {
     min-height: 280px;
+    aspect-ratio: 1.25 / 1;
   }
 `;
 
 export const ProjectImage = styled.img`
   display: block;
-
   width: 100%;
   height: 100%;
-
   object-fit: cover;
-
+  object-position: center 52%;
   transition: transform 0.6s ease;
 
   ${ImageWrapper}:hover & {
@@ -120,7 +123,6 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   padding: 56px;
 
   @media (max-width: ${theme.breakpoints.tablet}) {

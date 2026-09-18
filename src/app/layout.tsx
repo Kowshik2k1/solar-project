@@ -16,8 +16,8 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL("https://example.com"),
   title: {
-    default: "Company Name | Infrastructure & Solar Solutions",
-    template: "%s | Company Name",
+    default: "ASP Infrastructure Projects | Infrastructure & Solar Solutions",
+    template: "%s | ASP Infrastructure Projects",
   },
   description:
     "Infrastructure development and solar solutions for residential, commercial and industrial projects.",
